@@ -1,6 +1,6 @@
 part of 'get_post_bloc.dart';
 
-class GetPostState extends Equatable {
+abstract class GetPostState extends Equatable {
   @override
   List<Object?> get props => [];
 }
@@ -8,19 +8,18 @@ class GetPostState extends Equatable {
 class GetPostStateLoading extends GetPostState {}
 
 class GetPostStateLoaded extends GetPostState {
-  final List<Post> post;
+  final List<Posts> posts;
 
-  GetPostStateLoaded(this.post);
+  GetPostStateLoaded({required this.posts});
 
   @override
-  List<Object?> get props => [post];
+  List<Object?> get props => [posts];
 }
 
-class GetPostStateErro extends GetPostState {
+class GetPostStateError extends GetPostState {
   final String message;
 
-  GetPostStateErro({required this.message});
-
+  GetPostStateError({required this.message});
   @override
   List<Object?> get props => [message];
 }

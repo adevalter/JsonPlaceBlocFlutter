@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grupoestudo/bloc/get_post_bloc.dart';
-import 'package:grupoestudo/homepage.dart';
-
-import 'package:grupoestudo/repostiries/api_request.dart';
+import 'package:grupoestudo/pages/homepage.dart';
+import 'package:grupoestudo/repository/api_request_post.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,15 +21,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-        create: (context) =>
-            GetPostBloc(ApiRequest())..add(GetPostFetchEvent()),
+        create: (context) => GetPostBloc(ApiRequestPost())
+          ..add(GetPostEventFetch(page: 1, maxResults: 10)),
         child: const HomePage(),
       ),
     );
   }
 }
-/*
- home: BlocProvider(
-          create: (context) => GetUserBloc()..add(GetUser()),
-          child: const UserPage()),
-*/

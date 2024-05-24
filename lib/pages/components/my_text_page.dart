@@ -11,6 +11,9 @@ class MyText extends StatefulWidget {
 class _MyTextState extends State<MyText> {
   @override
   Widget build(BuildContext context) {
-    return Text(widget.msg);
+    return Text(
+      widget.msg,
+      overflow: TextOverflow.ellipsis,
+    );
   }
 }
